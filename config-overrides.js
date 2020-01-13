@@ -4,8 +4,10 @@ module.exports = override(
     fixBabelImports('import', {
         libraryName: 'antd',
         libraryDirectory: 'es',
-        style: true,
+        style: true, // 自动打包相关的样式
     }),
+
+    // 使用less-loader 对源码中的less的变量进行重新指定。
     addLessLoader({
         javascriptEnabled: true,
         modifyVars: { '@primary-color': '#1DA57A' },

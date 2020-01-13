@@ -10,6 +10,6 @@ export default class App extends Component {
         return <Button type="primary" onClick={ this.handleClick }>Primary</Button>
     }
     handleClick = () => {
-        message.success('sucess');
+        message.success('success!');
     }
 }
