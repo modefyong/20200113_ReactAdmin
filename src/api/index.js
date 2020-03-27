@@ -9,7 +9,8 @@ import ajax from './ajax.js'
 // export function reqLogin(username, password) {
 //     return ajax('./login', { username, password }, 'POST')
 // }
-export const reqLogin = (username, password) => ajax('./login', { username, password }, 'POST')
+// /loginReact 自己写的接口
+export const reqLogin = (username, password) => ajax('/loginReact', { username, password }, 'POST')
 
 // 添加用户(url是端口号后面的地址)
-export const reqAddUser = (user) => ajax('/add', user, 'POST')
+// export const reqAddUser = (user) => ajax('/add', user, 'POST')
