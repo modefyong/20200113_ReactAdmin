@@ -1,0 +1,43 @@
+.header {
+    background-color: #fff;
+   .header-top {
+        text-align: right;
+        border-bottom: 1px solid #20B2AA;
+        height: 40px;
+        line-height: 40px;
+        padding-right: 10px;
+   } 
+   .header-bottom {
+        position: relative;
+        height: 40px;
+        line-height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding-right: 35px;
+        .header-title {
+            display: inline-block;
+            padding-left: 100px;
+            font-size: 18px;
+            &::after {
+                // 伪元素
+                content: '';
+                display: block;
+                position: absolute;
+                top: 36px;
+                border-top: 20px solid #fff;
+                border-left: 20px solid transparent;
+                border-right: 20px solid transparent;
+                border-bottom: 10px solid transparent;
+            }
+        }
+        .weather {
+            display: flex;
+            padding-right: 20px;
+            img {
+                height: 24px;
+                margin: 8px 8px 0;
+            }
+        }
+   }
+}

@@ -12,9 +12,9 @@
         "@typescript-eslint/parser": "^2.8.0",
         "antd": "^3.26.6",
         "axios": "^0.19.2",
-        "babel-eslint": "10.0.3",
+        "babel-eslint": "^10.0.3",
         "babel-jest": "^24.9.0",
-        "babel-loader": "8.0.6",
+        "babel-loader": "^8.1.0",
         "babel-plugin-import": "^1.13.0",
         "babel-plugin-named-asset-import": "^0.3.5",
         "babel-preset-react-app": "^9.1.0",
@@ -35,12 +35,12 @@
         "file-loader": "4.3.0",
         "fs-extra": "^8.1.0",
         "html-webpack-plugin": "4.0.0-beta.5",
-        "http-proxy-middleware": "^1.0.3",
         "identity-obj-proxy": "3.0.0",
         "jest": "24.9.0",
         "jest-environment-jsdom-fourteen": "0.1.0",
         "jest-resolve": "24.9.0",
         "jest-watch-typeahead": "0.4.2",
+        "jsonp": "^0.2.1",
         "less": "^3.10.3",
         "less-loader": "^5.0.0",
         "mini-css-extract-plugin": "0.8.0",
@@ -57,7 +57,7 @@
         "react-dev-utils": "^10.0.0",
         "react-dom": "^16.12.0",
         "react-router-dom": "^5.1.2",
-        "react-scripts": "^3.3.0",
+        "react-scripts": "^3.4.1",
         "resolve": "1.12.2",
         "resolve-url-loader": "3.1.1",
         "sass-loader": "8.0.0",
@@ -67,7 +67,7 @@
         "terser-webpack-plugin": "2.2.1",
         "ts-pnp": "1.1.5",
         "url-loader": "2.3.0",
-        "webpack": "4.41.2",
+        "webpack": "^4.42.0",
         "webpack-dev-server": "3.9.0",
         "webpack-manifest-plugin": "2.2.0",
         "workbox-webpack-plugin": "4.3.1"
@@ -146,4 +146,5 @@
         ]
     },
     "proxy": "http://localhost:8080/ordinary"
+
 }
