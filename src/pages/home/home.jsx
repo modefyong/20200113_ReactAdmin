@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 
+import './home.less'
+
 // 首页路由
 export default class Home extends Component {
     render(){
         return (
-            <div>
-                Home
+            <div className="introduce">
+               欢迎来到毛风拥的react项目！
             </div>
         )
     }

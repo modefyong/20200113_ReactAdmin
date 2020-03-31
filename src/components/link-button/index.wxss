@@ -1,6 +1,4 @@
 .exit {
-  width: 50px;
-  height: 40px;
   background-color: transparent;
   border: 0;
   outline: 0;

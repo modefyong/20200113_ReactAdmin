@@ -23,8 +23,8 @@ export const reqWeather = (city) => {
     return new Promise((resolve, reject) => {
         const url = `http://api.map.baidu.com/telematics/v3/weather?location=${city}&output=json&ak=3p49MVra6urFRGOT9s8UBWr2`
         jsonp(url, {}, (err, data) => {
-            console.log(err, data)
-                // 如果成功了
+            // console.log(err, data)
+            // 如果成功了
             if (!err && data.status === 'success') {
                 // 解构
                 const { dayPictureUrl, weather } = data.results[0].weather_data[0]
@@ -39,3 +39,12 @@ export const reqWeather = (city) => {
 }
 
 // reqWeather('北京')
+
+// 获取积分列表
+export const reqCategorys = (parentId) => ajax('/intergralList/getReactList', parentId, 'POST')
+    // 获取积分加分详情
+export const reqCategoryDetails = (detailKindId) => ajax('/intergralList/getReactDetailList', { detailKindId }, 'POST')
+    // 修改积分总分
+export const reqUpdateCategory = (id, allSc) => ajax('/intergralList/updateReactList', { id, allSc }, 'POST')
+    // 添加积分
+export const reqAddCategory = ({ categoryId, categoryName }) => ajax('/manage/category/update', { categoryId, categoryName }, 'POST')

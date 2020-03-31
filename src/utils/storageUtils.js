@@ -7,7 +7,7 @@ export default {
     // 保存user
     saveUser(user) {
         // localStorage.setItem(USER_KEY, JSON.stringify(user));
-        store.set(USER_KEY, user);
+        store.set(USER_KEY, user.data);
     },
     // 读取user
     getUser() {

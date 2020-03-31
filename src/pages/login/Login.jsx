@@ -36,6 +36,7 @@ class Login  extends Component {
                     memoryUtils.user = result;
                     storageUtils.saveUser(result);// 保存到本地中去
                     // 跳转到后台管理界面。（不需要在回退，所以不使用push）
+                    // console.log(this.props.history)
                     this.props.history.replace('/'); // 不了解！
                 }else{
                     message.error(result.message);
