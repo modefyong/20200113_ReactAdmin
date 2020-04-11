@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 
 import { Form, Input } from 'antd'
 
+import PropTypes from 'prop-types' 
+
 const Item = Form.Item
 // const Option = Select.Option
 
@@ -13,6 +15,16 @@ class AddForm  extends Component {
         super(props);
         this.state = {}
     }
+
+    static propTypes = {
+        setFrom: PropTypes.func.isRequired
+    }
+
+    componentWillMount() {
+        // 将form对象通过setForm()传递给父组件
+        this.props.setFrom(this.props.form)
+    }
+
     render() {
         const { getFieldDecorator } = this.props.form
         return (
@@ -25,7 +37,7 @@ class AddForm  extends Component {
                 
                 <Item>
                     {
-                        getFieldDecorator('parentId', {
+                        getFieldDecorator('allSc', {
                             initialValue: ''
                         })(
                             <Input placeholder="请输入积分"></Input>

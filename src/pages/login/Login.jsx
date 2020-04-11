@@ -33,8 +33,9 @@ class Login  extends Component {
                     // 提示登陆成功。
                     message.success('登陆成功！');
                     // 保存登陆用户
-                    memoryUtils.user = result;
-                    storageUtils.saveUser(result);// 保存到本地中去
+                    // console.log(result)
+                    memoryUtils.user = result.data;
+                    storageUtils.saveUser(result.data);// 保存到本地中去
                     // 跳转到后台管理界面。（不需要在回退，所以不使用push）
                     // console.log(this.props.history)
                     this.props.history.replace('/'); // 不了解！

@@ -3,7 +3,7 @@ import { Card, Button,Icon, Table, message, Modal } from 'antd';
 
 import LinkButton from '../../components/link-button'
 
-import {reqCategorys,reqCategoryDetails, reqUpdateCategory} from '../../api'
+import {reqCategorys,reqCategoryDetails, reqUpdateCategory, reqAddCategory} from '../../api'
 
 import AddForm from './add-form'
 import UpdateForm from './update-form'
@@ -156,24 +156,45 @@ export default class Category extends Component {
   }
 
   // 添加
-  addCategory = () => {}
-  // 更新
-  updateCategory = async () => {
+  addCategory = async () => {
     // 1.隐藏确认框
     this.setState({showStatus: 0})
     // 2.向后台发送修改积分的请求（需要先准备数据。*）
 
-    const categoryId = this.category.id
     const allSc = this.form.getFieldValue("allSc")
 
     // 清除原来form里的数据(因为form里保存了原来文本框的输入内容，只要点了确认或者取消按钮)
     this.form.resetFields()
-    const result = await reqUpdateCategory(categoryId, allSc)
-
-    if(result.data){
+    const result = await reqAddCategory(allSc)
+    if(result.data && result.data != ''){
       // 3.重新渲染列表数据
       this.getCategorys()
     }
+  }
+  // 更新
+  updateCategory = () => {
+
+    this.form.validateFields(async (err, values) => {
+      if(!err){
+        // 1.隐藏确认框
+        this.setState({showStatus: 0})
+        // 2.向后台发送修改积分的请求（需要先准备数据。*）
+
+        const categoryId = this.category.id
+        // const allSc = this.form.getFieldValue("allSc")
+        const { allSc } = values
+
+        // 清除原来form里的数据(因为form里保存了原来文本框的输入内容，只要点了确认或者取消按钮)
+        this.form.resetFields()
+        const result = await reqUpdateCategory(categoryId, allSc)
+
+        if(result.data){
+          // 3.重新渲染列表数据
+          this.getCategorys()
+        }
+      }
+    })
+    
     
   }
 
@@ -228,7 +249,7 @@ export default class Category extends Component {
                   onOk={this.addCategory}
                   onCancel={this.handleCancel}
                 >
-                  <AddForm></AddForm>
+                  <AddForm setFrom={(form) => { this.form = form }}></AddForm>
                 </Modal>
                 <Modal
                   title="修改积分"

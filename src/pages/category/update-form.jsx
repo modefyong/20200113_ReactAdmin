@@ -36,7 +36,10 @@ class UpdateForm  extends Component {
                 <Item>
                     {
                         getFieldDecorator('allSc', {
-                            initialValue: categoryName
+                            initialValue: categoryName,
+                            rules: [
+                                { required: true, message: '分类名称必须输入' }
+                            ]
                         })(
                             <Input placeholder="请输入积分"></Input>
                         )

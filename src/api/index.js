@@ -47,4 +47,10 @@ export const reqCategoryDetails = (detailKindId) => ajax('/intergralList/getReac
     // 修改积分总分
 export const reqUpdateCategory = (id, allSc) => ajax('/intergralList/updateReactList', { id, allSc }, 'POST')
     // 添加积分
-export const reqAddCategory = ({ categoryId, categoryName }) => ajax('/manage/category/update', { categoryId, categoryName }, 'POST')
+export const reqAddCategory = (allSc) => ajax('/intergralList/addReactList', { allSc }, 'POST')
+
+// 获取角色列表(包含菜单列表)
+export const reqRoles = () => ajax('/intergralList/getReactRoles')
+
+// 更新角色
+export const reqUpdateRole = (role) => ajax('/intergralList/updateReactRole', role, 'post')
