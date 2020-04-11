@@ -1,0 +1,15 @@
+div,
+header,
+h1 {
+  margin: 0;
+  padding: 0;
+}
+.left-nav .left-nav-header {
+  display: flex;
+  align-items: center;
+  padding: 40px 20px;
+}
+.left-nav .left-nav-header h1 {
+  color: #fff;
+  font-size: 21px;
+}
