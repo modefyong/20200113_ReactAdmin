@@ -4,8 +4,9 @@ import { Card, Button, Table,Modal, message } from 'antd'
 
 import {PAGE_SIZE} from '../../utils/constants'
 
-import { reqRoles, reqUpdateRole } from '../../api'
+import { reqRoles, reqUpdateRole, reqAddRole } from '../../api'
 import AuthForm from './auth-form'
+import AddRole from './add-role'
 
 import memoryUtils from '../../utils/memoryUtils'
 
@@ -15,7 +16,8 @@ export default class Role extends Component {
     state = {
         roles: [],
         role: {}, // 选中的role
-        isShowAuth: false //是否显示设置权限界面
+        isShowAuth: false, //是否显示设置权限界面
+        isShowAddRole: false
     }
 
     constructor(props){
@@ -77,7 +79,6 @@ export default class Role extends Component {
 
     // 更新角色
     updateRole = async () => {
-
         // 隐藏确认框
         this.setState({
             isShowAuth: false
@@ -104,6 +105,25 @@ export default class Role extends Component {
         }
     }
 
+    // 添加角色
+    addRole = async () => {
+        // 1.隐藏确认框
+        this.setState({
+            isShowAddRole: false
+        })
+        // 2.向后台发送修改积分的请求（需要先准备数据。*）
+        const name = this.form.getFieldValue("name")
+        // 清除原来form里的数据
+        this.form.resetFields()
+        const result = await reqAddRole(name)
+        if(result.code === "0000"){
+            message.success("角色添加成功！")
+            // 3.重新渲染列表数据
+            this.getRoles()
+        }
+
+    }
+
     componentWillMount(){
         this.initColumn()
         this.getRoles()
@@ -111,10 +131,10 @@ export default class Role extends Component {
 
     render(){
 
-        const {roles, role, isShowAuth} = this.state
+        const {roles, role, isShowAuth, isShowAddRole} = this.state
         const title = (
             <span>
-                <Button type="primary">创建角色</Button> &nbsp;&nbsp;
+                <Button type="primary" onClick={()=> this.setState({isShowAddRole: true})}>创建角色</Button> &nbsp;&nbsp;
                 <Button type="primary" disabled = {!role.id} onClick={()=> this.setState({isShowAuth: true})}>设置角色权限</Button>
             </span>
         )
@@ -146,6 +166,16 @@ export default class Role extends Component {
                   }}
                 >
                   <AuthForm ref={this.auth} role={role} />
+                </Modal>
+                <Modal
+                  title="创建角色"
+                  visible={isShowAddRole}
+                  onOk={this.addRole}
+                  onCancel={()=> {
+                      this.setState({isShowAddRole: false})
+                  }}
+                >
+                    <AddRole setFrom={(form) => { this.form = form }}></AddRole>
                 </Modal>
             </Card>
         )

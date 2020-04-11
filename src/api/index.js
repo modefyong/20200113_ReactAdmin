@@ -51,6 +51,17 @@ export const reqAddCategory = (allSc) => ajax('/intergralList/addReactList', { a
 
 // 获取角色列表(包含菜单列表)
 export const reqRoles = () => ajax('/intergralList/getReactRoles')
+    // 更新角色
+export const reqUpdateRole = (role) => ajax('/intergralList/updateReactRole', role, 'POST')
+    // 增加角色
+export const reqAddRole = (name) => ajax('/intergralList/addReactRole', { name }, 'POST')
 
-// 更新角色
-export const reqUpdateRole = (role) => ajax('/intergralList/updateReactRole', role, 'post')
+
+// 获取用户列表,返回值为两个数组，一个users，一个roles
+export const reqUsers = () => ajax('/intergralList/getReactUsers')
+
+// 删除用户
+export const reqDelUser = (id) => ajax('/intergralList/deleteReactUser', { id }, 'POST')
+
+// 添加用户
+export const reqAddUser = (user) => ajax('/intergralList/addReactUser', user, 'POST')
